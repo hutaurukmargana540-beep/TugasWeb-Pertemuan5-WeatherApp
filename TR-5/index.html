@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Weather App Tugas Rutin 5 menggunakan Open-Meteo API tanpa API key">
+  <title>Weather App — Tugas Rutin 5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">☁</span>
+        <div>
+          <span class="eyebrow">TUGAS RUTIN 5</span>
+          <h1>Weather App</h1>
+        </div>
+      </div>
+      <button id="unitToggle" class="unit-toggle" type="button" aria-label="Ubah satuan suhu">°C</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">OPEN-METEO API</span>
+          <h2>Cuaca kota pilihanmu, <span>secara real-time.</span></h2>
+          <p>Cari nama kota untuk melihat suhu, kondisi cuaca, kelembapan, angin, dan prakiraan 5 hari.</p>
+        </div>
+        <div class="api-card no-key-card">
+          <span class="api-badge">✓ TANPA API KEY</span>
+          <strong>Langsung digunakan</strong>
+          <small>Data cuaca diambil dari Open-Meteo. Tidak perlu login, memasukkan API key, atau konfigurasi tambahan.</small>
+        </div>
+      </section>
+
+      <section class="search-card" aria-label="Pencarian cuaca">
+        <form id="searchForm" class="search-form">
+          <label class="sr-only" for="cityInput">Nama kota</label>
+          <span class="search-icon">⌕</span>
+          <input id="cityInput" type="search" placeholder="Contoh: Medan, Jakarta, Tokyo..." required autocomplete="off">
+          <button class="primary-btn" type="submit">Cari Cuaca</button>
+        </form>
+        <div id="history" class="history" aria-label="Riwayat pencarian"></div>
+      </section>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+
+      <section id="weatherSection" class="weather-section hidden">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">KONDISI SAAT INI</span>
+            <h2 id="locationName">—</h2>
+          </div>
+          <span id="updatedAt" class="muted">—</span>
+        </div>
+
+        <div class="current-grid">
+          <article class="weather-main card">
+            <div class="weather-icon-wrap"><div id="weatherIcon" class="weather-emoji" role="img" aria-label="Ikon cuaca">☀️</div></div>
+            <div>
+              <div class="temperature"><span id="temperature">—</span><sup id="degree">°C</sup></div>
+              <p id="description" class="description">—</p>
+              <p class="feels">Terasa seperti <strong id="feelsLike">—</strong></p>
+            </div>
+          </article>
+
+          <article class="details card">
+            <div class="detail-item"><span>💧</span><div><small>Kelembapan</small><strong id="humidity">—</strong></div></div>
+            <div class="detail-item"><span>💨</span><div><small>Kecepatan angin</small><strong id="wind">—</strong></div></div>
+            <div class="detail-item"><span>🌡️</span><div><small>Tekanan</small><strong id="pressure">—</strong></div></div>
+            <div class="detail-item"><span>👁️</span><div><small>Jarak pandang</small><strong id="visibility">—</strong></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="forecastSection" class="forecast-section hidden">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PRAKIRAAN</span>
+            <h2>5 Hari ke Depan</h2>
+          </div>
+          <span class="muted">Data Open-Meteo</span>
+        </div>
+        <div id="forecastGrid" class="forecast-grid"></div>
+      </section>
+
+      <section id="emptyState" class="empty-state">
+        <div class="empty-icon">☀️</div>
+        <h2>Belum ada data cuaca</h2>
+        <p>Masukkan nama kota untuk memulai. Tidak perlu API key.</p>
+      </section>
+    </main>
+
+    <footer>Weather App · Tugas Rutin 5 · HTML, CSS &amp; JavaScript ES6+</footer>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>
